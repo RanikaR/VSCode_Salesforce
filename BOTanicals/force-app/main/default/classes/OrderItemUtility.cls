@@ -7,6 +7,18 @@ public class OrderItemUtility {
         List<OrderItem> newBouquets = new List<OrderItem>();
         
         //TO DO 3.1: Get the values for the bonus product we want to add to the order
+        // Use SOQL to get the ID of the bonus bouquet and store it in an sObject variable called bonusProduct
+        List <Product2> bonusProductList = [SELECT ID, ProductCode FROM Product2 WHERE ProductCode='BOT-BB-12'];
+        Product2 bonusProduct = new Product2();
+        if (bonusProductList.size()>0) {
+            bonusProduct = bonusProductList[0];
+        }
+        // Use SOQL to get the price book entry ID associated with the bonusProduct and store it in an sObject variable called entry
+        List <PricebookEntry> entryList = [SELECT ID, Product2Id FROM PricebookEntry WHERE Product2Id=:bonusProduct.Id];
+        PricebookEntry entry = new PricebookEntry();
+        if (entryList.size()>0) {
+            entry = entryList[0];
+        }
         
         //TO DO 2.2: Loop over our orders from the trigger for each order in the list (called currentOrder) do something
         for(Order currentOrder : ordersFromTrigger){
@@ -18,7 +30,7 @@ public class OrderItemUtility {
                 OrderItem freeBouquet = new OrderItem(
                     OrderId = currentOrder.id,
                     //this is the order we're linking the bouquet to
-                    //PricebookEntryId = entry.id,
+                    PricebookEntryId = entry.id,
                     numberOfFlowers__c = 3,
                     description = 'FREE Bouquet',
                     Quantity = 1,
@@ -32,6 +44,7 @@ public class OrderItemUtility {
             } //end if
         } //end for loop
         //TO DO 3.2: Use DML to add the new bouquet to the Order
+        insert newBouquets;
         
     } //end method
 } //end class
