@@ -1,0 +1,40 @@
+@isTest
+private class AccountManagerTest {
+
+    @isTest
+    static void testGetAccount() {
+        Id recordId = getAccountId();  // uses helper method
+        
+        //Set up a test request
+        RestRequest request = new RestRequest();
+        request.requestUri = 'https://playful-goat-kk05m0-dev-ed.my.salesforce.com/services/apexrest/Accounts/' 
+            					+ recordId + '/contacts';
+        
+        request.httpMethod = 'GET';
+        RestContext.request = request;
+        
+        //Call the method to test - getAccount()
+        Account accTest = AccountManager.getAccount();
+                
+        //Verify results
+        System.assert(accTest != null); // account not empty
+        System.assertEquals('Account Manager Test Account', accTest.Name);    
+        
+        
+    }
+    
+    // Helper method
+    private static Id getAccountId() {
+        // Create a test account
+        Account accTest = new Account(Name = 'Account Manager Test Account');
+        insert accTest;
+        
+        // Create a related contact
+        Contact conTest = new Contact(LastName = 'Smith', AccountId = accTest.Id);
+        insert conTest;
+        
+        return accTest.Id;
+        
+        
+    }
+}
