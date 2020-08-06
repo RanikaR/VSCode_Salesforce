@@ -1,0 +1,27 @@
+@isTest
+public class AccountProcessorTest {
+    
+    // Method to test countContacts()
+    @isTest
+    public static void testCountContacts() {
+        
+        // Create test account and related contact
+        Account acc = new Account(Name = 'Future Methods Test');
+        Contact con = new Contact(LastName = 'Jones', FirstName = 'Sandra', AccountId = acc.Id);
+        
+        // Insert to database
+        insert acc;
+        insert con;
+        
+        // Create list of account ids and add test account's id
+        List<Id> accountIds = new List<Id>();
+        accountIds.add(acc.Id);
+        
+        // Call countContacts from AccountProcessor class and pass in accountIds
+        Test.startTest();
+        	AccountProcessor.countContacts(accountIds);
+        Test.stopTest();
+        
+        
+    }
+}

@@ -1,0 +1,24 @@
+global class AccountProcessor {
+    @future
+    public static void countContacts(List<Id> accountIds) {
+		// SOQL query selects ID and Number of Contacts fields and related Contact IDs
+        List<Account> accounts = [SELECT Id, Number_of_Contacts__c,
+                                  (SELECT Id from Contacts)
+                                  FROM Account WHERE Id IN :accountIds];
+        
+        // For loop iterates through list of accounts, counts the number of Contacts 
+        // and updates the Number_of_Contacts__c field with the value
+        for (Account acc : accounts) {
+            
+            // Create list cons
+            List<Contact> cons = acc.contacts;
+                       
+            // Set the account's Number of Contacts field to the contacts size
+            acc.Number_of_Contacts__c = cons.size();
+            
+        }
+        
+        // Update accounts in the database
+        update accounts;
+    }
+}
