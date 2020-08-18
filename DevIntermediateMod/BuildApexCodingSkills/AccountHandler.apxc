@@ -1,0 +1,34 @@
+public class AccountHandler {
+    
+    public static void insertAccount(Integer numAcc) {
+        // List of new Accounts to be added
+        List<Account> addAccounts = new List<Account>();
+        
+        // counter
+        Integer n = 1;
+        
+        while (n <= numAcc) {
+        	System.debug('Counter before increment: ' + n);
+            
+            // Create new Account with values
+            Account acc = new Account();
+            acc.Name = 'Acme Inc ' + n;
+            acc.AccountNumber = 'A000' + n;
+            
+            // Add new account to List
+            addAccounts.add(acc);
+            
+            // increment n
+            n++;
+            System.debug('Counter after increment: ' + n);
+        }
+        
+        System.debug('Size of Account List: ' + addAccounts.size() );
+        System.debug('Elements in Account List: ' + addAccounts);
+        insert addAccounts;
+        
+    }
+    
+    
+
+}
