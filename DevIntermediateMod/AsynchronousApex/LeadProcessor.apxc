@@ -1,0 +1,49 @@
+global class LeadProcessor implements Database.Batchable<sObject>, Database.Stateful {
+    
+/* Create an Apex class that implements the Database.Batchable interface to update all Lead records in the org with a specific LeadSource. 
+ * Write unit tests that achieve 100% code coverage for the class.
+ * Create an Apex class called 'LeadProcessor' that uses the Database.Batchable interface.
+ * Use a QueryLocator in the start method to collect all Lead records in the org.
+ * The execute method must update all Lead records in the org with the LeadSource value of 'Dreamforce'.
+ * Create an Apex test class called 'LeadProcessorTest'.
+ * In the test class, insert 200 Lead records, execute the 'LeadProcessor' Batch class and test that all Lead records were updated correctly.
+ * The unit tests must cover all lines of code included in the LeadProcessor class, resulting in 100% code coverage.
+ * Run your test class at least once (via 'Run All' tests the Developer Console) before attempting to verify this challenge. 
+*/
+    
+    global Integer recordsProcessed = 0;
+    
+    // Gather Lead Records where the LeadSource = Web
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+    	return Database.getQueryLocator(
+        'SELECT Id, Company, LastName, LeadSource FROM Lead'
+        );    
+    }
+    
+    global void execute(Database.BatchableContext bc, List<Lead> leadRecords) {
+        // process each batch of records
+        for (Lead l : leadRecords) {
+            l.LeadSource = 'Dreamforce';
+            
+            // increment 
+            recordsProcessed++;
+        }
+        
+        // DML update
+        update leadRecords;
+        
+        
+    }
+    
+    global void finish(Database.BatchableContext bc) {
+        System.debug('Records Processed: ' + recordsProcessed ); 
+        AsyncApexJob job = [SELECT Id, Status, NumberOfErrors, 
+            JobItemsProcessed,
+            TotalJobItems, CreatedBy.Email
+            FROM AsyncApexJob
+            WHERE Id = :bc.getJobId()]; 
+        
+    }
+    
+
+}
