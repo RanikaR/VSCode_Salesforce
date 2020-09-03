@@ -1,0 +1,35 @@
+public with sharing class MaintenanceRequestHelper {  
+    
+    public static void updateWorkOrders(List<Case> maintenanceRecords) {
+        // TODO: Complete the method to update workorders
+           
+        
+        // New request is tied to the same vehicle and piece of equipment to be 
+        // serviced as the original closed service request
+        List<Case> newRequests  = new List<Case>();
+        
+        // Iterate through maintenance records and look for the closed ones with
+        // type of "repair" or "routine maintenance"
+        for(Case mr : maintenanceRecords) {
+            if(mr.status == 'Closed') {
+                if (mr.type =='Repair' || mr.type =='Routine Maintenance') {
+                    Case newMainRec = new Case();
+                
+                    // Filling in values based on requirements
+                    newMainRec.Type = 'Routine Maintenance';
+                    newMainRec.Subject = 'This is a routine maintenance';
+                    newMainRec.Date_Reported__c = Date.today();
+                    
+                    // Add new records to newRequests
+                    newRequests.add(newMainRec);
+                }
+            }
+            
+        } // exits for loop
+        
+        // DML insert
+        insert newRequests;
+        
+    }        
+    
+}
