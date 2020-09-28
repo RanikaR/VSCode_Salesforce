@@ -17,4 +17,11 @@ public with sharing class Books4EveryoneHomeController {
                 FROM Recommendation__c
                 WHERE Book__c != null];
     }
+    
+    @AuraEnabled
+    public static List<Book__c> getBooksWithoutAuthors(){
+        return [SELECT Name
+                FROM Book__c
+                WHERE Author__c = null];
+    }
 }
