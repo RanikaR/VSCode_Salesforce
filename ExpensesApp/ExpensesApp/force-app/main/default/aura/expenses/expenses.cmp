@@ -67,4 +67,4 @@
         </lightning:layoutItem>
     </lightning:layout>
     <!-- / NEW EXPENSE FORM -->
-</aura:component>	
+</aura:component>
