@@ -1,3 +1,7 @@
 <aura:component >
-    <h1><c:campingList/></h1>
+
+    <lightning:layout class="slds-page-header">
+        <h1><c:campingList/></h1>
+    </lightning:layout>
+    
 </aura:component>
