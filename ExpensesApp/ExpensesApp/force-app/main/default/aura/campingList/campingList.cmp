@@ -19,49 +19,47 @@
               slds-p-vertical_medium">
               Add Camping Item
             </legend>
-                <!-- CREATE NEW ITEM FORM -->
-    <form class="slds-form--stacked">
+    
+            <!-- CREATE NEW ITEM FORM -->
+            <form class="slds-form--stacked">
 
-        <div class="slds-form-element slds-is-required">
-            <div class="slds-form-element__control">
-                <lightning:input type="text" aura:id="itemname" label="Name"
+            <div class="slds-form-element slds-is-required">
+                <div class="slds-form-element__control">
+                    <lightning:input type="text" aura:id="itemname" label="Name"
                               class="slds-input"
                               value="{!v.newItem.Name}"
                               required="true"/>
-
+                </div>
             </div>
-        </div>
 
-        <div class="slds-form-element slds-is-required">
-            <div class="slds-form-element__control">
-                <lightning:input type="number" aura:id="quantity" label="Quantity"
+            <div class="slds-form-element slds-is-required">
+                <div class="slds-form-element__control">
+                    <lightning:input type="number" aura:id="quantity" label="Quantity"
                                  class="slds-input"
                                  value="{!v.newItem.Quantity__c}"
                                  required="true"
                                  step="1"
-                                 min="1"
-                />
-
+                                 min="1"/>
+                </div>
             </div>
-        </div>
 
-        <div class="slds-form-element">
-            <div class="slds-form-element__control">
-                <lightning:input type="number" aura:id="campinglistform" label="Price"
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <lightning:input type="number" aura:id="campinglistform" label="Price"
                          name="price"
                          min="0.1"
                          formatter="currency"
                          step="0.01"
-                                 value="{!v.newItem.Price__c}"/>
+                         value="{!v.newItem.Price__c}"/>
+                </div>
             </div>
-        </div>
 
         <div class="slds-form-element"> 
             <div class="slds-form-element__control">
                      <lightning:input type="checkbox" label="Packed" 
                                      class="slds-checkbox"
                                      checked="{!v.newItem.Packed__c}" 
-                                   aura:id="camppacked" />
+                                     aura:id="camppacked" />
             </div>
         </div>
 
