@@ -7,6 +7,8 @@
                     'Price__c' : 0,
                     'Packed__c' : false}"/>
 
+    <aura:handler name="handleAddItem" event="c:addItemEvent" action="{!c.handleAddItem}" />
+
 
         <!-- camping list form cut and pasted to campingListForm.cmp  -->
 

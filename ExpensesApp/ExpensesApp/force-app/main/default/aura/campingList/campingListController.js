@@ -16,8 +16,23 @@
         // Send action off to be executed
         $A.enqueueAction(action);
     },
+
+    handleAddItem: function(component, event, helper) {
+        var action = component.get("c.saveItem");
+        action.setParams({"item" : newItem});
+        action.setCall(this, function(response) {
+            var state = response.getState();
+            if(component.isValid() && state === "SUCCESS") {
+                console.log("Succeeded with state: " + state);
+            } else {
+                console.log("Failed with state: " + state);
+            }
+        });
+    },
+
+
     
-    createItem : function(component, event, helper){
+   /* createItem : function(component, event, helper){
         
         helper.validateFields (component,component.find("name"));
         helper.validateFields (component,component.find("Price"));
@@ -28,5 +43,6 @@
             helper.createItem (component,Item);             
                        
         }
-	}    
+    }   
+    */ 
 })
