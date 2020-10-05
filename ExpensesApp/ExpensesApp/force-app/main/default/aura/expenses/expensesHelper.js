@@ -1,17 +1,35 @@
 ({
-    createExpense: function(component, expense) {
-        let action = component.get("c.saveExpense");
+    saveExpense: function(component, expense, callback) {
+        console.log("saveExpense in expensesHelper.js")
+        var action = component.get("c.saveExpense");
         action.setParams({
             "expense": expense
         });
-        action.setCallback(this, function(response){
-            let state = response.getState();
-            if (state === "SUCCESS") {
-                let expenses = component.get("v.expenses");
+        if (callback) {
+            action.setCallback(this, callback);
+        }
+        $A.enqueueAction(action);
+    },
+    
+    
+    createExpense: function(component, expense) {
+        console.log("createExpense in expensesHelper.js")
+        this.saveExpense(component, expense, function(response){
+            var state = response.getState();
+            if (component.isValid() && state === "SUCCESS") {
+                var expenses = component.get("v.expenses");
                 expenses.push(response.getReturnValue());
                 component.set("v.expenses", expenses);
             }
         });
-        $A.enqueueAction(action);
     },
+    
+    updateExpense: function(component, expense) {
+        console.log("updateExpense in expensesHelper.js")
+        this.saveExpense(component, expense);
+    },
+    
+    
+    
+    
 })
