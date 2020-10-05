@@ -1,16 +1,12 @@
 <aura:component controller="CampingListController">
     <aura:attribute name="items" type="Camping_Item__c[]"/>
-    <aura:attribute name="newItem" type="Camping_Item__c"
-        default="{ 'sobjectType' : 'Camping_Item__c',
-                    'Name' : '',
-                    'Quantity__c' : 0,
-                    'Price__c' : 0,
-                    'Packed__c' : false}"/>
 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
     <aura:handler name="addItem" event="c:addItemEvent" action="{!c.handleAddItem}" />
 
 
         <!-- camping list form cut and pasted to campingListForm.cmp  -->
+        <c:campingListForm />
 
         <!-- ITERATIING ITEM LISTS -->
         <div class="slds-card slds-p-top--medium">
