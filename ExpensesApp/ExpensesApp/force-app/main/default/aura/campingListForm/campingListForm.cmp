@@ -1,4 +1,8 @@
 <aura:component >
+
+    <aura:registerEvent name="addItem" type="c:addItemEvent" />
+
+
 	<!-- NEW CAMPING FORM -->
         <lightning:layout>
             <lightning:layoutItem padding="around-small" size="6">
