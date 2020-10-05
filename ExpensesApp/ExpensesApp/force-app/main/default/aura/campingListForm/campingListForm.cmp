@@ -60,7 +60,7 @@
             <lightning:button label="Create Camping Item" 
                           class="slds-m-top--medium"
                           variant="brand"
-                          onclick="{!c.createItem}"/>
+                          onclick="{!c.clickCreateItem}"/>
         </div>
 
     </form>
