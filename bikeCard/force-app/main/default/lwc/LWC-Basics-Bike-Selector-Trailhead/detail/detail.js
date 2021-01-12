@@ -1,5 +1,4 @@
-import { LightningElement } from 'lwc';
-import { api } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import { bikes } from 'c/data';
 
 
