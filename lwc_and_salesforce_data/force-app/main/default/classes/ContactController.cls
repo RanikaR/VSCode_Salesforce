@@ -1,6 +1,6 @@
 public with sharing class ContactController {
     @AuraEnabled(cacheable=true)
-    public static List<Account> getContacts(){
+    public static List<Contact> getContacts(){
         return [
             SELECT FirstName, LastName, Email
             FROM Contact
