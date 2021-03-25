@@ -1,6 +1,7 @@
 <template>
     <lightning-card>
         <template if:true={accounts.data}>
+            <p>{errors}</p>
             <lightning-datatable
                 key-field="Id"
                 data={accounts.data}
