@@ -5,7 +5,7 @@ public with sharing class ContactController {
             SELECT FirstName, LastName, Email
             FROM Contact
             WITH SECURITY_ENFORCED
-            ORDER BY Name
+            ORDER BY LastName
         ];
     }
 }
