@@ -13,7 +13,7 @@ export default class AccountList extends LightningElement {
     columns = COLUMNS;
     @wire(getAccounts)
     accounts;
-    error;
+    errors;
 
     get errors() {
         return (this.accounts.error) ?
