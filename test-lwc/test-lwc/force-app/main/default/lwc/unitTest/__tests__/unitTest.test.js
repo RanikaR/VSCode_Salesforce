@@ -43,4 +43,22 @@ describe('c-unit-test', () => {
       });
   });
 
+  // When an input field updates, test verifies if unit status gets updated
+  it('displays unit status with input change event', () => {
+      const element = createElement('c-unit-test', {
+          is: Unittest
+      });
+      document.body.appendChild(element);
+      const div = element.shadowRoot.querySelector('div');
+
+      // Trigger unit status input change
+      const inputElement = element.shadowRoot.querySelector('lightning-input');
+      inputElement.value = 7;
+      inputElement.dispatchEvent(new CustomEvent('change'));
+
+      return Promise.resolve().then(() => {
+          expect(div.textContent).toBe('Unit 7 alive!');
+      });
+  });
+
 });
