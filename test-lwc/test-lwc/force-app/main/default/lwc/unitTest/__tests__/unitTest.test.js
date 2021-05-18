@@ -1,5 +1,5 @@
 import {createElement} from 'lwc';
-import unitTest from 'c/unitTest';
+import UnitTest from 'c/unitTest';
 
 describe('c-unit-text', () => {
     afterEach(() => {
