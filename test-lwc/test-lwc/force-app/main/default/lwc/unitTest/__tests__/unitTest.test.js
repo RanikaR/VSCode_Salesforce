@@ -46,7 +46,7 @@ describe('c-unit-test', () => {
   // When an input field updates, test verifies if unit status gets updated
   it('displays unit status with input change event', () => {
       const element = createElement('c-unit-test', {
-          is: Unittest
+          is: UnitTest
       });
       document.body.appendChild(element);
       const div = element.shadowRoot.querySelector('div');
