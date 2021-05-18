@@ -32,7 +32,15 @@ describe('c-unit-test', () => {
 
       const div = element.shadowRoot.querySelector('div');
       // Verify displayed unit status
-      expect(div.textContent).toBe('Unit 6 alive!');
+      // expect(div.textContent).toBe('Unit 6 alive!');  <-- failing statement
+      expect(div.textContent).not.toBe('Unit 6 alive!');
+
+      //Return a rpomise to wait for any asynchronous DOM updates. 
+      // Jest will automatically wait for the Promise chain to complete
+      // before ending the test and fail the test if the promise rejects. 
+      return Promise.resolve().then(() => {
+          expect(div.textContent).toBe('Unit 6 alive!');
+      });
   });
 
 });
