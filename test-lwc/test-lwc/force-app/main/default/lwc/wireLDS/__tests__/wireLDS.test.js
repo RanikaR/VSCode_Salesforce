@@ -35,7 +35,7 @@ describe('c-wire-l-d-s', () => {
 
                 const industryElement = element.shadowRoot.querySelector('p.accountIndustry');
                 expect(industryElement.textContent).toBe(
-                    'Industry: ' + mockGetRecord.fields.Inudstry.value
+                    'Industry: ' + mockGetRecord.fields.Industry.value
                 );
 
                 const phoneElement = element.shadowRoot.querySelector('p.accountPhone');
