@@ -8,7 +8,7 @@ import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
 export default class WireLDS extends LightningElement {
     @api recordId;
 
-    @wire(getRecord, {recordId: '$recordId', fields: [NAME_FIELD, INDUSTRY_FIELD], optionalFields: [PHONE_FIELD, OWNER_NAME_FIELD])
+    @wire(getRecord, {recordId: '$recordId', fields: [NAME_FIELD, INDUSTRY_FIELD], optionalFields: [PHONE_FIELD, OWNER_NAME_FIELD] })
     account;
     
     get name() {
