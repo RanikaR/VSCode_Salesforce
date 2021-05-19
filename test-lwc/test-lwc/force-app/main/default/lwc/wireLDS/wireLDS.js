@@ -15,6 +15,10 @@ export default class WireLDS extends LightningElement {
         return getFieldValue(this.account.data, NAME_FIELD);
     }
 
+    get phone() {
+        return getFieldValue(this.account.data, PHONE_FIELD);
+    }
+
     get industry(){
         return getFieldValue(this.account.data, INDUSTRY_FIELD);
     }
