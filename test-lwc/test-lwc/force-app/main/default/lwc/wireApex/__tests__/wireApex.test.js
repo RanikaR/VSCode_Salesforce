@@ -51,7 +51,7 @@ describe('c-wire-apex', () => {
 
             return Promise.resolve().then(() => {
                 // Select elements for validation
-                const accountElements = element.shadowRoot.querySeclectorAll('p');
+                const accountElements = element.shadowRoot.querySelectorAll('p');
                 expect(accountElements.legnth).toBe(
                     mockGetAccountsListNoRecords.legnth
                 );
