@@ -3,6 +3,7 @@ module.exports = {
     ...jestConfig,
     // add any custom configurations here
     moduleNameMapper: {
-        '^lightning/button$': '<rootDir>/force-app/test/jest-mocks/lightning/button'
+        '^thunder/hammerButton$':'<rootDir>/force-app/test/jest-mocks/thunder/hammerButton'
+        // '^lightning/button$': '<rootDir>/force-app/test/jest-mocks/lightning/button'
     }
 };
