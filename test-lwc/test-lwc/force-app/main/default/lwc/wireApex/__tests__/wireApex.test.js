@@ -53,7 +53,7 @@ describe('c-wire-apex', () => {
                 // Select elements for validation
                 const accountElements = element.shadowRoot.querySelectorAll('p');
                 expect(accountElements.legnth).toBe(
-                    mockGetAccountsListNoRecords.legnth
+                    mockGetAccountListNoRecords.legnth
                 );
             });
         });
