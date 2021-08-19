@@ -2,6 +2,7 @@ public class AccountsSelector extends fflib_SObjectSelector {
 
     public List<Schema.SObjectField> getSObjectFieldList(){
         return new List<Schema.SObjectField> {
+            Account.Id,
             Account.Name,
             Account.Description,
             Account.AnnualRevenue
