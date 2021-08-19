@@ -8,7 +8,7 @@ public class AccountsSelector extends fflib_SObjectSelector {
         };
     }
 
-    public Scheme.SObjectType getSObjectType() {
+    public Schema.SObjectType getSObjectType() {
         return Account.sObjectType;
     }
 
