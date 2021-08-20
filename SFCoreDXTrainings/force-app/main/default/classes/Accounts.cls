@@ -1,6 +1,6 @@
 public class Accounts extends fflib_SObjectDomain {
     
-    public Accounts(List<Accounts> sObjectList) {
+    public Accounts(List<Account> sObjectList) {
         super(sObjectList);
     }
 
@@ -12,7 +12,7 @@ public class Accounts extends fflib_SObjectDomain {
 
     public override void onApplyDefaults() {
         for (Account acct : (List<Account>)Records) {
-            if(acc.Description == null) {
+            if(acct.Description == null) {
                 acct.Description = 'Domain classes rock!';
             }
             
@@ -23,16 +23,16 @@ public class Accounts extends fflib_SObjectDomain {
         onApplyDefaults();
     }
 
-    public override void onBeforeUpdate(Map<Id, SObject> Records) {
+    public override void onBeforeUpdate(Map<Id,sObject> existingRecords) {
         String description = 'Domain classes rock!';
         List<Account> updatedAccounts = new List<Account>(); 
 
-        for (Account acct: (List<Account>) Records) {
-            acct.AnnualRevenue = description.getLevenshteinDistance(acc.Description);
-            updatedAccounts.add(acc);
+        for (Account acct:(List<Account>) Records) {
+            acct.AnnualRevenue = description.getLevenshteinDistance(acct.Description);
+            updatedAccounts.add(acct);
         }
 
-        fflib_SObjectInitOfWork uow = 
+        fflib_SObjectUnitOfWork uow = 
             new fflib_SObjectUnitOfWork(
                 new Schema.SObjectType[] {Account.SObjectType}
             );
