@@ -30,6 +30,11 @@ public class UnitOfWorkTest {
 
         // Commit work to database
         uow.commitWork();
+
+        // System asserts from challenge
+        System.assertEquals(100, [Select Id from Account].size());
+        System.assertEquals(500, [Select Id from Contact].size());
+        System.assertEquals(500, [Select Id from Note].size());
     }
 
     
