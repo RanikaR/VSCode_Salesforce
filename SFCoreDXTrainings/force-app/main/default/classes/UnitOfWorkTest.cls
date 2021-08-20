@@ -27,6 +27,9 @@ public class UnitOfWorkTest {
                 uow.registerNew(note, Note.ParentId, acct);
             }
         }
+
+        // Commit work to database
+        uow.commitWork();
     }
 
     
