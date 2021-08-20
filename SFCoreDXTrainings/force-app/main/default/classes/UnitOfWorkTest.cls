@@ -20,11 +20,11 @@ public class UnitOfWorkTest {
             // Creating 5 Contacts and Notes per Account
             for(Integer j = 0; j < 5; j++) {
                 Contact con = new Contact(FirstName = 'Test', LastName = 'Contact' + j);
-                uow.registerNew(con, Conttact.AccountId, acct);
+                uow.registerNew(con, Contact.AccountId, acct);
 
 
-                Note note = new Note(Title = 'TestNote ' + j, Body = 'Testing');
-                uow.registerNew(note, Note.ParentId, acct);
+                Note n = new Note(Title = 'TestNote ' + j, Body = 'Testing');
+                uow.registerNew(n, Note.ParentId, acct);
             }
         }
 
