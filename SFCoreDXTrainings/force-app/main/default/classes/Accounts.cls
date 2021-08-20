@@ -11,7 +11,7 @@ public class Accounts extends fflib_SObjectDomain {
     }
 
     public override void onApplyDefaults() {
-        for (Account acct : (List<Account>)Reccords) {
+        for (Account acct : (List<Account>)Records) {
             if(acc.Description == null) {
                 acct.Description = 'Domain classes rock!';
             }
