@@ -1,5 +1,4 @@
-public with sharing class UnitOfWorkTest {
-    public UnitOfWorkTest() {
+@isTest
+public class UnitOfWorkTest {
 
-    }
 }
