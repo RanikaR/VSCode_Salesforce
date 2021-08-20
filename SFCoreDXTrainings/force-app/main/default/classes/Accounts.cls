@@ -1,5 +1,3 @@
-public with sharing class Accounts {
-    public Accounts() {
-
-    }
+public class Accounts extends fflib_SObjectDomain {
+    
 }
