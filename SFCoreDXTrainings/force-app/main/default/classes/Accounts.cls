@@ -19,4 +19,9 @@ public class Accounts extends fflib_SObjectDomain {
         }
     }
 
+    public override void handleBeforeInsert(){
+        onApplyDefaults();
+    }
+
+
 }
