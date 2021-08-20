@@ -23,5 +23,21 @@ public class Accounts extends fflib_SObjectDomain {
         onApplyDefaults();
     }
 
+    public override void onBeforeUpdate(Map<Id, SObject> Records) {
+        String description = 'Domain classes rock!';
+        List<Account> updatedAccounts = new List<Account>(); 
 
+        for (Account acct: (List<Account>) Records) {
+            acct.AnnualRevenue = description.getLevenshteinDistance(acc.Description);
+            updatedAccounts.add(acc);
+        }
+
+        fflib_SObjectInitOfWork uow = 
+            new fflib_SObjectUnitOfWork(
+                new Schema.SObjectType[] {Account.SObjectType}
+            );
+            
+        uow.registerDirty(updatedAccounts);
+        
+    } 
 }
