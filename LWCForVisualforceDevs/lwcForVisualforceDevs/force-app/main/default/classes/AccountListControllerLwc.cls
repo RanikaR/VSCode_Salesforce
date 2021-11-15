@@ -9,7 +9,7 @@ public with sharing class AccountListControllerLwc {
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<Accounts> queryAccountsByRevenue(Decimal annualRevenue){
+    public static List<Account> queryAccountsByRevenue(Decimal annualRevenue){
         return [
             SELECT Name
             FROM Account
