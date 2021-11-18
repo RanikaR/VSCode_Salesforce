@@ -12,4 +12,9 @@ export default class Numerator extends LightningElement {
         console.log("Subtract clicked");
         this.counter--;
     }
+
+    handleMultiply(event) {
+        const factor = event.detail;
+        this.counter *= factor;
+    }
 }
