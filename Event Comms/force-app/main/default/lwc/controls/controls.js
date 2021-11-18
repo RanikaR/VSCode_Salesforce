@@ -11,7 +11,7 @@ export default class Controls extends LightningElement {
         this.dispatchEvent(new CustomEvent('subtract'));
     }
     
-    handleMultiple(event) {
+    handleMultiply(event) {
         const factor = event.target.dataset.factor;
         console.log("data factor = " + factor);
         console.log("handleMultiple event dispatched");
