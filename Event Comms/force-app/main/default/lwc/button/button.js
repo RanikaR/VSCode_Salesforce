@@ -6,7 +6,7 @@ export default class Button extends LightningElement {
 
     handleButton(event) {
         this.dispatchEvent(new CustomEvent('buttonclick', {
-            // bubbles:true
+            bubbles:true
         }));
         console.log("buttonclick event dispatched");
     }
